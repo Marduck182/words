@@ -1,0 +1,200 @@
+/* Elementos de la barra superior y de "Elegir lote". Usa los tokens de index.css. */
+
+.topbar-end {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.theme-btn {
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+.lot-list {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.lot-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.5em 5em 7.5em;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lot-row[aria-current="true"] {
+  margin: 0 -12px;
+  padding-right: 12px;
+  padding-left: 12px;
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+}
+
+.lot-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.lot-name {
+  font-family: var(--font-word);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.lot-row[data-status="done"] .lot-name {
+  color: var(--muted);
+}
+
+.lot-range {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.lot-state {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.lot-row[data-status="done"] .lot-state {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.lot-count {
+  text-align: right;
+}
+
+.lot-row .btn {
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .lot-row {
+    grid-template-columns: minmax(0, 1fr) 7.5em;
+  }
+  .lot-state,
+  .lot-count {
+    display: none;
+  }
+}
+
+/* ───────────── Ventana flotante ───────────── */
+
+[data-tauri-drag-region] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--ink) 25%, transparent) transparent;
+}
+
+.window-close {
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+.hotkey {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hotkey-keys {
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 6px;
+}
+
+.hotkey-keys kbd {
+  min-width: 2.2em;
+  padding: 4px 9px;
+  font-size: 0.875rem;
+}
+
+.hotkey-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ───────────── Ver en contexto ───────────── */
+
+.context-btn {
+  align-self: flex-start;
+  margin: 4px 0 0 -10px;
+}
+
+.context {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  font-family: var(--font-word);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+/* ───────────── Pie de atajos (recogido por defecto) ───────────── */
+
+.practice-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 12px 10px 24px;
+}
+
+.practice-foot .keys {
+  flex: 1;
+  justify-content: flex-start;
+  gap: 4px 18px;
+}
+
+.keys-toggle {
+  min-height: 30px;
+  font-size: 0.8125rem;
+}
+
+.practice-foot .keys li {
+  white-space: nowrap;
+}
+
+.practice-foot .keys:has(li:nth-child(3)) {
+  display: grid;
+  width: 100%;
+  flex-basis: 100%;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  padding-right: 12px;
+}
+
+.keys-toggle {
+  margin-left: -10px;
+}
+
+/* ───────────── Ventana angosta (se puede achicar hasta 420 px) ───────────── */
+
+@media (max-width: 470px) {
+  .brand {
+    display: none;
+  }
+  .topbar {
+    padding-left: 12px;
+  }
+  /* Los selectores de varias opciones caben en una línea aunque la ventana esté al mínimo. */
+  .segmented button {
+    padding: 0 9px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}

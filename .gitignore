@@ -1,0 +1,8 @@
+_source/
+node_modules/
+dist/
+src-tauri/target/
+.superpowers/
+design-system/
+*.log
+*.tsbuildinfo
